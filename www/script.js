@@ -46,7 +46,7 @@ function canvasApp() {
 	var turnAngle;
 	var turnSpeed;
 	var sphereCenterX, sphereCenterY, sphereCenterZ;
-	var particleRad;
+	var particle
 	var zeroAlphaDepth;
 	var randAccelX, randAccelY, randAccelZ;
 	var gravity;

@@ -5,13 +5,24 @@ import time
 def speak(text):
     text = str(text)
     engine = pyttsx3.init('sapi5')
-    voices = engine.getProperty('voices') 
+    voices = engine.getProperty('voices')
     engine.setProperty('voice', voices[0].id)
     engine.setProperty('rate', 174)
-    eel.DisplayMessage(text)
+
+    try:
+        eel.DisplayMessage(text)
+    except:
+        print("[Warning] Cannot send DisplayMessage, socket might be closed.")
+
     engine.say(text)
-    eel.receiverText(text)
+
+    try:
+        eel.receiverText(text)
+    except:
+        print("[Warning] Cannot send receiverText, socket might be closed.")
+
     engine.runAndWait()
+
 
 
 def takecommand():
@@ -41,29 +52,32 @@ def takecommand():
 
 @eel.expose
 def allCommands(message=1):
-
     if message == 1:
         query = takecommand()
         print(query)
-        eel.senderText(query)
+        try:
+            eel.senderText(query)
+        except:
+            print("[Warning] Cannot send text, socket might be closed.")
     else:
         query = message
-        eel.senderText(query)
-    try:
+        try:
+            eel.senderText(query)
+        except:
+            print("[Warning] Cannot send text, socket might be closed.")
 
+    try:
         if "open" in query:
             from engine.features import openCommand
             openCommand(query)
         elif "on youtube" in query:
             from engine.features import PlayYoutube
             PlayYoutube(query)
-        
         elif "send message" in query or "phone call" in query or "video call" in query:
             from engine.features import findContact, whatsApp
             flag = ""
             contact_no, name = findContact(query)
             if(contact_no != 0):
-
                 if "send message" in query:
                     flag = 'message'
                     speak("what message to send")
@@ -75,12 +89,16 @@ def allCommands(message=1):
                     name = takecommand()
                 else:
                     flag = 'video call'
-                    
                 whatsApp(contact_no, query, flag, name)
         else:
             from engine.features import chatBot
             chatBot(query)
+    except Exception as e:
+        print(f"[ERROR] Command execution failed: {e}")
+
+    try:
+        eel.ShowHood()
     except:
-        print("error")
-    
-    eel.ShowHood()
+        print("[Warning] Cannot update UI, socket might be closed.")
+
+    # eel.ShowHood()
