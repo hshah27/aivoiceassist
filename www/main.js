@@ -61,13 +61,13 @@ $(document).ready(function () {
     document.addEventListener('keyup', doc_keyUp, false);
 
     // to play assisatnt 
-    function PlayAssistant(message) {
+    async function PlayAssistant(message) {
 
         if (message != "") {
 
             $("#Oval").attr("hidden", true);
             $("#SiriWave").attr("hidden", false);
-            eel.allCommands(message);
+            await eel.allCommands(message)();
             $("#chatbox").val("")
             $("#MicBtn").attr('hidden', false);
             $("#SendBtn").attr('hidden', true);

@@ -71,6 +71,8 @@ def allCommands(message=1):
                     
                 elif "phone call" in query:
                     flag = 'call'
+                    speak("who do you want to call?")
+                    name = takecommand()
                 else:
                     flag = 'video call'
                     

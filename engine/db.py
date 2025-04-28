@@ -12,9 +12,9 @@ cursor = conn.cursor()
 # query = "CREATE TABLE IF NOT EXISTS web_command(id integer primary key, name VARCHAR(100), url VARCHAR(1000))"
 # cursor.execute(query)
 
-# query = "INSERT INTO web_command VALUES (null,'youtube', 'https://www.youtube.com/')"
-# cursor.execute(query)
-# conn.commit()
+query = "INSERT INTO web_command VALUES (null,'chat gpt', 'https://chatgpt.com/')"
+cursor.execute(query)
+conn.commit()
 # cursor.execute('''CREATE TABLE IF NOT EXISTS contacts (id integer primary key, name VARCHAR(200), mobile_no VARCHAR(255), email VARCHAR(255) NULL)''')
 
 # Specify the column indices you want to import (0-based index)
@@ -35,7 +35,7 @@ cursor = conn.cursor()
 # conn.commit()
 # conn.close()
 
-# query = "INSERT INTO contacts VALUES (null,'Fenil', '9820479928','')"
+# query = "delete from contacts where id = 1"
 # cursor.execute(query)
 # conn.commit()
 

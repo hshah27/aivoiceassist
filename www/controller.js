@@ -15,7 +15,7 @@ $(document).ready(function () {
     eel.expose(ShowHood)
     function ShowHood() {
         $("#Oval").attr("hidden", false);
-        $("#SiriWave").attr("hidden", true);
+        $("#Siriwave").attr("hidden", true);
     }
 
     eel.expose(senderText)

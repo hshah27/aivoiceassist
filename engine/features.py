@@ -86,7 +86,7 @@ def hotword():
     try:
        
         # pre trained keywords    
-        porcupine=pvporcupine.create(keywords=["jarvis","alexa"]) 
+        porcupine=pvporcupine.create(keywords=["nova","alexa"]) 
         paud=pyaudio.PyAudio()
         audio_stream=paud.open(rate=porcupine.sample_rate,channels=1,format=pyaudio.paInt16,input=True,frames_per_buffer=porcupine.frame_length)
         
@@ -142,15 +142,15 @@ def whatsApp(mobile_no, message, flag, name):
     if flag == 'message':
         encoded_message = shlex.quote(message)
         whatsapp_url = f"whatsapp://send?phone={mobile_no}&text={encoded_message}"
-        jarvis_message = f"Message sent successfully to {name}"
+        nova_message = f"Message sent successfully to {name}"
 
     elif flag == 'call':
         whatsapp_url = f"whatsapp://call?phone={mobile_no}"
-        jarvis_message = f"Calling {name}"
+        nova_message = f"Calling {name}"
 
     else:  # Video call
         whatsapp_url = f"whatsapp://send?phone={mobile_no}"  # Open chat first
-        jarvis_message = f"Starting video call with {name}"
+        nova_message = f"Starting video call with {name}"
 
     # Open WhatsApp using os.system
     os.system(f'start "" "{whatsapp_url}"')
@@ -166,7 +166,7 @@ def whatsApp(mobile_no, message, flag, name):
         time.sleep(1)
         pyautogui.press('enter')
 
-    speak(jarvis_message)
+    speak(nova_message)
 
 def chatBot(query):
     user_input = query.lower()

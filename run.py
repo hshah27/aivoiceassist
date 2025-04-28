@@ -1,7 +1,7 @@
 import multiprocessing
 
-# To run Jarvis
-def startJarvis():
+# To run nova
+def startnova():
         # Code for process 1
         print("Process 1 is running.")
         from main import start
@@ -17,7 +17,7 @@ def listenHotword():
 
     # Start both processes
 if __name__ == '__main__':
-        p1 = multiprocessing.Process(target=startJarvis)
+        p1 = multiprocessing.Process(target=startnova)
         p2 = multiprocessing.Process(target=listenHotword)
         p1.start()
         p2.start()
